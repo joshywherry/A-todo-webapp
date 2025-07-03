@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block title %}Home Page{% endblock %} {% block
+content %}
+<h2>Task Dashboard</h2>
+
+<div class="tasks_table">
+  <table border="1" class="tbl">
+    <thead>
+      <tr>
+        <th>Completed</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for task in tasks %}
+      <tr
+        style="background-color: {% if task[4] == 'done' %}#d4edda{% else %}#fff{% endif %};"
+      >
+        <td>
+          <input type="checkbox" {% if task[4] == 'done' %}checked{% endif %}
+          onchange="toggleStatus({{ task[0] }})" />
+        </td>
+        <td>{{ task[1] }}</td>
+        <td>{{ task[2] }}</td>
+        <td>{{ task[3] }}</td>
+        <td>{{ task[4] | capitalize }}</td>
+        <td>
+          <a href="{{ url_for('deletetasks', task_id=task[0]) }}"> Delete </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  function toggleStatus(taskId) {
+    fetch(`/toggle_status/${taskId}`, {
+      method: "POST",
+    }).then(() => {
+      location.reload();
+    });
+  }
+</script>
+{% endblock %}

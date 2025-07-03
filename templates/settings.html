@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+
+<h2>Settings</h2>
+
+{% if success %}
+  <p style="color: green;">{{ success }}</p>
+{% endif %}
+
+<form method="POST" >
+  <label for="sort_order">Default Task Sort Order:</label>
+  <select class="select" name="sort_order" id="sort_order">
+    <option value="date" {% if settings[0] == 'date' %}selected{% endif %}>By Date</option>
+    <option value="title" {% if settings[0] == 'title' %}selected{% endif %}>By Title</option>
+    <option value="status" {% if settings[0] == 'status' %}selected{% endif %}>By Status</option>
+  </select>
+
+  <br><br>
+
+  <label>
+    <input type="checkbox" name="notifications" {% if settings[1] == 1 %}checked{% endif %}>
+    Enable Email Notifications
+  </label>
+
+  <br><br>
+
+  <button type="submit" class="sets">Save Settings</button>
+</form>
+
+{% endblock %}

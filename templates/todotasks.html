@@ -1,0 +1,13 @@
+{% extends 'base.html'%} {% block content%}
+<div class="tasks">
+  <form method="post" action="{{url_for('todotasks')}}">
+    <label for="title">Task Title:</label>
+    <input type="text" id="title" name="title" />
+    <label for="description"> Task Description</label>
+    <textarea type="text" id="description" name="description"></textarea>
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required />
+    <button class="btn" type="submit">Save</button>
+  </form>
+</div>
+{% endblock%}

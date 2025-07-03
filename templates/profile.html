@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+  @media (max-width: 700px) {
+    .profile {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-details {
+      text-align: center;
+    }
+    .profile-card img {
+      border-radius: 5px;
+      height: 80%;
+      width: 80%;
+    }
+  }
+</style>
+
+<div class="profile-content">
+  <div class="profile">
+    <div class="profile-card">
+      {% if profile_pic %}
+      <img
+        src="{{ url_for('static', filename='uploads/' ~ profile_pic) }}"
+        alt="Profile Picture"
+      />
+      {% else %}
+      <img
+        src="{{ url_for('static', filename='uploads/default.png') }}"
+        alt="Default Picture"
+      />
+      {% endif %}
+    </div>
+
+    <div class="profile-details">
+      <p><strong>Name:</strong> Joshua Were</p>
+      <p><strong>Email:</strong> joshuawere911@gmail.com</p>
+      <p><strong>Age:</strong> 25</p>
+      <p><strong>Occupation:</strong> Developer</p>
+    </div>
+  </div>
+
+  <hr style="margin: 30px 0" />
+
+  <div class="todo-details">
+    <h2>Your Progress Summary</h2>
+    <h4 style="color: green">Here is your task summary 😊</h4>
+    <ul>
+      <li><strong>Total tasks:</strong> {{ total }}</li>
+      <li><strong>Completed tasks:</strong> {{ done }}</li>
+      <li><strong>Pending tasks:</strong> {{ pending }}</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

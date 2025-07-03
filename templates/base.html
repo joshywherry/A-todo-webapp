@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/style.css" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Nova+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="dashboard">
+      <div class="sidebar">
+        <div class="links">
+          <div class="logo">
+            <img src="/images/Jaydo.png" alt="" />
+          </div>
+          <ul>
+            <li>
+              <a href="{{url_for('dashboard')}}">
+                <i class="fa-solid fa-house"></i> Home</a
+              >
+            </li>
+
+            <li>
+              <a href="{{ url_for('analytics') }}"
+                ><i class="fa-solid fa-chart-simple"></i> Analytics</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="accountlinks">
+          <ul>
+            <li>
+              <a href="{{url_for('profile')}}">
+                <i class="fa-solid fa-user"></i> Profile</a
+              >
+            </li>
+            <li>
+              <a href=" {{ url_for('settings') }}">
+                <i class="fa-solid fa-gear"></i> Settings</a
+              >
+            </li>
+          </ul>
+          <p style="font-size: 10px; color: white">&copy jnexus technologies</p>
+        </div>
+      </div>
+      <div class="topbar">
+        <h2>My Todo List</h2>
+        <div class="mainlinks">
+          <ul>
+            <li><a href="{{url_for('dashboard')}}"> Tasks</a></li>
+            <li><a href="{{ url_for('analytics') }}"> Analytics</a></li>
+          </ul>
+        </div>
+        <div></div>
+        <a href="{{url_for('todotasks')}}"
+          ><button class="btn" style="text-align: right; margin-bottom: 10px">
+            <i class="fa-solid fa-plus"></i>ADD TASK
+          </button></a
+        >
+        <div class="maincontent">{% block content %} {% endblock %}</div>
+      </div>
+    </div>
+  </body>
+</html>

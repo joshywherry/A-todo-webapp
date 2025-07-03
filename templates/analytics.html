@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block title %}Analytics{% endblock %} {% block
+content %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div
+  class="analytics-container"
+  style="padding: 20px; max-width: 400px; margin: auto"
+>
+  <h2>Task Analytics</h2>
+
+  <canvas id="statusChart" height="100"></canvas>
+  <hr />
+  <canvas id="trendChart" height="100"></canvas>
+</div>
+
+<script>
+    const statusData = {
+      labels: {{ status_data | map(attribute=0) | list | tojson }},
+      datasets: [{
+        label: 'Task Status Breakdown',
+        data: {{ status_data | map(attribute=1) | list | tojson }},
+        backgroundColor: ['#4CAF50', '#FFC107', '#F44336'],
+      }]
+    };
+
+    const trendData = {
+      labels: {{ daily_data | map(attribute=0) | list | tojson }},
+      datasets: [{
+        label: 'Tasks Created Over Time',
+        data: {{ daily_data | map(attribute=1) | list | tojson }},
+        borderColor: '#3e95cd',
+        fill: false,
+        tension: 0.1
+      }]
+    };
+
+    new Chart(document.getElementById('statusChart'), {
+    type: 'pie',
+    data: statusData,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      },
+      radius: '40%'
+    }
+  });
+</script>
+
+{% endblock %}
