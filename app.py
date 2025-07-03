@@ -129,4 +129,4 @@ def settings():
     return render_template("settings.html", settings=current_settings)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run( host='192.168.1.5', port =5000, debug=True)

@@ -22,16 +22,12 @@
     <div class="dashboard">
       <div class="sidebar">
         <div class="links">
-          <div class="logo">
-            <img src="/images/Jaydo.png" alt="" />
-          </div>
           <ul>
             <li>
-              <a href="{{url_for('dashboard')}}">
-                <i class="fa-solid fa-house"></i> Home</a
+              <a href="{{ url_for('dashboard') }}"
+                ><i class="fa-solid fa-house"></i> Home</a
               >
             </li>
-
             <li>
               <a href="{{ url_for('analytics') }}"
                 ><i class="fa-solid fa-chart-simple"></i> Analytics</a
@@ -39,22 +35,23 @@
             </li>
           </ul>
         </div>
+
         <div class="accountlinks">
           <ul>
             <li>
-              <a href="{{url_for('profile')}}">
-                <i class="fa-solid fa-user"></i> Profile</a
+              <a href="{{ url_for('profile') }}"
+                ><i class="fa-solid fa-user"></i> Profile</a
               >
             </li>
             <li>
-              <a href=" {{ url_for('settings') }}">
-                <i class="fa-solid fa-gear"></i> Settings</a
+              <a href="{{ url_for('settings') }}"
+                ><i class="fa-solid fa-gear"></i> Settings</a
               >
             </li>
           </ul>
-          <p style="font-size: 10px; color: white">&copy jnexus technologies</p>
         </div>
       </div>
+
       <div class="topbar">
         <h2>My Todo List</h2>
         <div class="mainlinks">
